@@ -1,4 +1,4 @@
-// 중첩 배열을 매개변수로 넘겨받아 모든 원소를 더하는 nested_sum 함수를 작성하라.
+package study1;// 중첩 배열을 매개변수로 넘겨받아 모든 원소를 더하는 nested_sum 함수를 작성하라.
 // 이 함수는 다음과 같이 동작해야 한다. 배열 대신 dynamic array사용가능
 
 public class study80 {

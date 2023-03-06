@@ -1,4 +1,4 @@
-// 배열을 매개변수로 받아서 중복 원소가 있다면 True를 반환하는 has_duplicates 함수를 작성하라.
+package study1;// 배열을 매개변수로 받아서 중복 원소가 있다면 True를 반환하는 has_duplicates 함수를 작성하라.
 // 원본 배열을 수정해서는 안 된다. ( 배열 대신 dynamic array사용가능 )
 
 public class study82 {
