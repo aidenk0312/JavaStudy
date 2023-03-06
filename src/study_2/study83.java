@@ -1,4 +1,4 @@
-package study2;
+package study_2;
 // account를 대상으로 클래스 만들어보기(메소드: 입금, 출금, 계좌정보 조회, 계좌이체, 입출금내역)
 
 import java.util.ArrayList;
