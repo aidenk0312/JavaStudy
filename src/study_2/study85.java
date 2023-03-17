@@ -5,11 +5,21 @@ public class study85 {
         private String name;
         private int age;
         private int studentId;
+        private int credit;
 
         public student(String name, int age, int studentId) {
             this.name = name;
             this.age = age;
             this.studentId = studentId;
+            this.credit = 3;
+        }
+
+        public int getCredit() {
+            return credit;
+        }
+
+        public void setCredit(int credit) {
+            this.credit = credit;
         }
 
         public String getName() {
@@ -36,12 +46,24 @@ public class study85 {
             this.studentId = studentId;
         }
 
-        public void study() {
-            System.out.println(name + "가(이) 공부합니다");
+        public void attendClass() {
+            if (Math.random() < 0.5) {
+                System.out.println(name + "가(이) 수업에 참여합니다");
+                upCredIt();
+            } else {
+                System.out.println(name + "가(이) 수업에 미참여합니다");
+                downCredIt();
+            }
         }
 
-        public void attendClass() {
-            System.out.println(name + "가(이) 수업에 참여합니다");
+        public void upCredIt() {
+            credit += 1;
+            System.out.println(name + "의 학점이 1점 증가되어 " + credit + "점");
+        }
+
+        public void downCredIt() {
+            credit -= 1;
+            System.out.println(name + "의 학점이 1점 감소되어 " + credit + "점");
         }
 
         public static void main(String[] args) {
@@ -51,8 +73,8 @@ public class study85 {
             System.out.println("나이: " + student.getAge());
             System.out.println("학번: " + student.getStudentId());
 
-            student.study();
             student.attendClass();
+            System.out.println("최종학점: " + student.getCredit());
         }
     }
 }

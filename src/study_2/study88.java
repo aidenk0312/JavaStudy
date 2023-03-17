@@ -1,56 +1,57 @@
 package study_2;
 
 public class study88 {
-    public static class Bicycle {
-        private int gear;
+    static class Bicycle {
         private int speed;
+        private int gear;
+        private static final int MAX_SPEED = 30;
+        private static final int MIN_SPEED = 1;
+        private static final int MAX_GEAR = 10;
+        private static final int MIN_GEAR = 1;
 
-        public Bicycle(int gear, int speed) {
-            this.gear = gear;
-            this.speed = speed;
+        public Bicycle() {
+            this.speed = 20;
+            this.gear = 3;
         }
 
-        public int getGear() {
-            return gear;
+        public void increaseSpeed() {
+            speed++;
+            if (speed > MAX_SPEED) {
+                speed = MAX_SPEED;
+                System.out.println("최대속도 넘음, 최대속도 " + MAX_SPEED);
+            }
         }
 
-        public void setGear(int gear) {
-            this.gear = gear;
-        }
-
-        public int getSpeed() {
-            return speed;
-        }
-
-        public void setSpeed(int speed) {
-            this.speed = speed;
-        }
-
-        public void speedUp(int increment) {
-            speed += increment;
-        }
-
-        public void applyBrake(int decrement) {
-            speed -= decrement;
+        public void decreaseSpeed() {
+            speed--;
+            if (speed < MIN_SPEED) {
+                speed = MIN_SPEED;
+                System.out.println("최소속도 미달, 최소속도 " + MIN_SPEED);
+            }
         }
 
         public void changeGear(int newGear) {
-            gear = newGear;
+            if (newGear >= MIN_GEAR && newGear <= MAX_GEAR) {
+                gear = newGear;
+            } else {
+                System.out.println("기어 변경 불가, 최소 기어 " + MIN_GEAR + ", 최대 기어 " + MAX_GEAR);
+            }
         }
-        public static void main(String[] args) {
-            Bicycle bicycle = new Bicycle(3, 20);
 
-            System.out.println("기어: " + bicycle.getGear());  // 기어 3
-            System.out.println("속도: " + bicycle.getSpeed()); // 속도 20
-
-            bicycle.speedUp(10); // 속도를 10 증가 > 30
-            bicycle.applyBrake(5); // 속도를 5 감소 > 25
-            bicycle.changeGear(4); // 기어를 4로 변경 > 4
-
-            System.out.println("======기어, 속도 변경======");
-
-            System.out.println("기어: " + bicycle.getGear()); // 4 출력
-            System.out.println("속도: " + bicycle.getSpeed()); // 25 출력
+        public void printStatus() {
+            System.out.println("===현재 속도, 기어===");
+            System.out.println("속도: " + speed);
+            System.out.println("기어: " + gear);
         }
+    }
+
+    public static void main(String[] args) {
+        Bicycle bicycle = new Bicycle();
+        bicycle.printStatus();
+
+        bicycle.increaseSpeed();
+        bicycle.increaseSpeed();
+        bicycle.changeGear(5);
+        bicycle.printStatus();
     }
 }

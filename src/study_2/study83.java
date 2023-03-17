@@ -42,21 +42,21 @@ public class study83 {
             this.balance = balance;
         }
 
-        private void addHistory(String type, Object value) {
-            history.add("(" + type + ")" + value);
+        private void addHistory(String type, Object value, int _balance) {
+            history.add("(" + type + ")" + value + ", balance : " + _balance);
         }
 
         public void deposit(int amount) { // 입금
             balance += amount;
-            addHistory("입금", amount);
-            System.out.println(owner + "입금 완료");
+            addHistory("입금", amount, this.balance);
+            System.out.println("(" + owner + ")" + amount + "원" + " " + "입금 완료" + ", " + "현재 잔액은: " + balance);
         }
 
         public void withdraw(int amount) { // 출금
             if (balance >= amount) {
                 balance -= amount;
-                addHistory("출금", amount);
-                System.out.println(owner + "출금 완료");
+                addHistory("출금", amount, this.balance);
+                System.out.println("(" + owner + ")" + amount + "원" + " " + "출금 완료" + ", " + "현재 잔액은: " + balance);
             } else {
                 System.out.println("잔액 보다 출금하려는 금액이 큽니다.");
             }
@@ -70,7 +70,7 @@ public class study83 {
             if (balance >= amount) {
                 balance -= amount;
                 receive.deposit(amount);
-                addHistory("계좌이체", amount + "(" + receive.getAccountNumber() + ")");
+                addHistory("계좌이체", amount + "(" + receive.getAccountNumber() + ")", this.balance);
                 System.out.println(amount + "원이" + " " + receive.getOwner() + "의 계좌에 이체 되었습니다.");
             } else {
                 System.out.println("잔액이 부족합니다.");
@@ -79,7 +79,7 @@ public class study83 {
 
         public void history() {  // 입출금 내역
             for (String list : history) {
-                System.out.println(list + "\n");
+                System.out.println(list);
             }
         }
     }
@@ -90,6 +90,8 @@ public class study83 {
         account1.deposit(5000);
         account1.withdraw(3000);
         account1.transfer(account2, 4000);
+        account1.checkBalance();
+
         System.out.println("====" + account1.getOwner() + "의 내역" + "====");
         account1.history();
         account1.checkBalance();
