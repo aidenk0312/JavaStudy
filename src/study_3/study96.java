@@ -9,18 +9,18 @@ public class study96 {
         public PositivePoint(int x, int y) {
             super(x, y);
             if (x < 0 || y < 0) {
-                super.setXY(0, 0);
+                setXY(0, 0);
             }
         }
 
         public void move(int x, int y) {
             if (x >= 0 && y >= 0) {
-                super.setXY(x, y);
+                setXY(x, y);
             }
         }
 
         public String toString() {
-            return "(" + super.getX() + "," + super.getY() + ")의 점입니다.";
+            return "(" + getX() + "," + getY() + ")의 점입니다.";
         }
 
         public static void main(String[] args) {

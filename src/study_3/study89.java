@@ -11,6 +11,10 @@ public class study89 {
         protected int getSize() {
             return size;
         }
+
+        public void printProperty() {
+            System.out.print(getSize() + "인치 ");
+        }
     }
 
     static class ColorTV extends TV {
@@ -20,13 +24,18 @@ public class study89 {
             super(size);
             this.color = color;
         }
-
+        @Override
         public void printProperty() {
-            System.out.println(getSize() + "인치 " + color + "컬러");
+            super.printProperty();
+            System.out.print(color + "컬러");
         }
     }
 
     public static void main(String[] args) {
+        TV myTV1 = new TV(32);
+        myTV1.printProperty();
+        System.out.println();
+
         ColorTV myTV = new ColorTV(32, 1024);
         myTV.printProperty();
     }

@@ -8,13 +8,17 @@ public class study90 {
             this.size = size;
         }
 
-        protected int getSize() {
+        public int getSize() {
             return size;
+        }
+
+        public void printProperty() {
+            System.out.print(getSize() + "인치 ");
         }
     }
 
-    static class ColorTV extends TV {
-        protected int color;
+    static class ColorTV extends study90.TV {
+        private int color;
 
         public ColorTV(int size, int color) {
             super(size);
@@ -22,11 +26,8 @@ public class study90 {
         }
 
         public void printProperty() {
-            System.out.println(getSize() + "인치 " + color + "컬러");
-        }
-
-        protected int getColor() {
-            return color;
+            super.printProperty();
+            System.out.print(color + "컬러");
         }
     }
 
@@ -38,8 +39,10 @@ public class study90 {
             this.ipAddress = ipAddress;
         }
 
+        @Override
         public void printProperty() {
-            System.out.println("나의 IPTV는 " + ipAddress + " 주소의 " + getSize() + "인치 " + getColor() + "컬러");
+            System.out.print("나의 IPTV는 " + ipAddress + " 주소의 ");
+            super.printProperty();
         }
     }
 
