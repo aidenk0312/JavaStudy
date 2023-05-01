@@ -36,6 +36,8 @@ public class DLL {
         head = head.next;
         if (head != null) {
             head.prev = null;
+        } else {
+            tail = null;
         }
         size--;
     }
@@ -68,14 +70,10 @@ public class DLL {
         if (head == null) {
             return;
         }
-        if (tail == null) {
-            return;
-        }
         tail = tail.prev;
         if (tail != null) {
             tail.next = null;
-        }
-        if (size == 0) {
+        } else {
             head = null;
         }
         size--;
@@ -135,8 +133,18 @@ public class DLL {
         dll.addFront(2);
         dll.addFront(3);
 
-        System.out.println("==================");
+        System.out.println("=========add=========");
 
+        System.out.println("Size: " + dll.size);
+        System.out.println("Front: " + dll.front());
+        dll.print();
+        dll.printReverse();
+
+        System.out.println("=======remove===========");
+
+        dll.removeFront();
+        dll.removeFront();
+        dll.removeFront();
         System.out.println("Size: " + dll.size);
         System.out.println("Front: " + dll.front());
         dll.print();
@@ -155,14 +163,10 @@ public class DLL {
         System.out.println("==========removeback========");
         dll.removeBack();
         dll.removeBack();
-        dll.removeBack();
-        dll.removeBack();
-        dll.removeBack();
 
         System.out.println("Size: " + dll.size);
         System.out.println("Front: " + dll.front());
         dll.print();
         dll.printReverse();
-
     }
 }
