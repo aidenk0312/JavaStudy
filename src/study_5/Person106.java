@@ -37,4 +37,10 @@ public class Person106 {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public void printInfo() {
+        System.out.println("이름: " + getName());
+        System.out.println("주소: " + getAddress());
+        System.out.println("전화번호: " + getPhoneNumber());
+    }
 }

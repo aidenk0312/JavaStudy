@@ -27,8 +27,12 @@ public class study105 {
         }
 
         public void sellApple(int sellAppleCnt) {
-            this.appleCnt -= sellAppleCnt;
-            this.profit += sellAppleCnt * applePrice;
+            if (this.appleCnt < sellAppleCnt) {
+                System.out.println("!!!!!!사과 재고 없음!!!!!!!");
+            } else {
+                this.appleCnt -= sellAppleCnt;
+                this.profit += sellAppleCnt * applePrice;
+            }
         }
 
         @Override
@@ -39,27 +43,31 @@ public class study105 {
     }
 
     static class Buyer extends Person {
-
         public Buyer(int appleCnt, int balance) {
             super(appleCnt, balance);
         }
 
         public void buyApple(Seller seller, int buyAppleCnt) {
-            this.appleCnt += buyAppleCnt;
-            this.balance -= buyAppleCnt * seller.applePrice;
-            seller.sellApple(buyAppleCnt);
+            int total = buyAppleCnt * seller.applePrice;
+            if (this.balance < total) {
+                System.out.println("!!!!!!!!!잔액 부족!!!!!!!!!!!");
+            } else {
+                this.appleCnt += buyAppleCnt;
+                this.balance -= buyAppleCnt * seller.applePrice;
+                seller.sellApple(buyAppleCnt);
+            }
         }
     }
 
     public static void main(String[] args) {
-        Seller seller = new Seller(100, 0, 1000);
+        Seller seller = new Seller(0, 0, 1000);
         Buyer buyer = new Buyer(0, 5000);
 
         System.out.println("구매행위가 일어나기 전의 상태");
         seller.printStatus("판매자");
         buyer.printStatus("구매자");
 
-        buyer.buyApple(seller, 5);
+        buyer.buyApple(seller, 0);
 
         System.out.println("구매행위가 일어난 후의 상태");
         seller.printStatus("판매자");
